@@ -1,45 +1,23 @@
 import React from 'react';
-
-function Food({ name, picture }) {
-  // {fav} = props.fav
-// console.log(props)
-// return <h1>I like {fav}</h1>;
-return (
-  <div>
-    <h1>I like { name }</h1>
-    <image src={picture}></image>
-  </div>
-);
-}
-const foodIlike = [
-{
-  name: 'Kimchi',
-  image: 'https://i.ytimg.com/vi/DfhkYNgnYYg/maxresdefault.jpg'
-},
-{
-  name: 'Ramen',
-  image: 'http://cfile221.uf.daum.net/image/999083345CA821C81A74E7'
-},
-{
-  name: 'Bibimbap',
-  image: 'http://cfile26.uf.tistory.com/image/234670415552F3990D533F'
-},
-{
-  name: 'Doncasu',
-  image: 'https://i.ytimg.com/vi/2cAbT8QEUY4/maxresdefault.jpg'
-},
-];
-
+import Home from './routes/Home';
+import './App.css';
+import { HashRouter, Route } from 'react-router-dom'
+import About from './routes/About'
+import Navigation from './components/Navigation'
+import Detail from './routes/Detail';
 
 function App() {
+  // return <Home></Home>
   return (
-    <div>
-      <h1>Hello</h1>
-      {foodIlike.map(dish => (<Food name={dish.name} picture={dish.image}></Food>))}
-      {/* <Food fav="ramen"></Food>
-      <Food fav="samgiosal"></Food>
-      <Food fav="chukumi"></Food> */}
-    </div>
+    <HashRouter>
+      <Navigation></Navigation>
+      <Route path="/" exact={true} component={Home}></Route>
+      <Route path="/about" component={About}></Route>
+      <Route path="/movie-detail" component={Detail}></Route>
+      {/* <Route path="/home"><h1>Home</h1></Route>
+      <Route path="/home/introduction"><h1>Introduction</h1></Route>
+      <Route path="/about"><h1>About</h1></Route> */}
+    </HashRouter>
   );
 }
 
